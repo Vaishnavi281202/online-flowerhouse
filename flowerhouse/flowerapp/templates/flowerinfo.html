@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Flowers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background:goldenrod;
+        }
+
+
+      header {
+    text-align: center;
+    padding: 4rem;
+    background: linear-gradient(to right, #cbef78, #cd9732); /* Dark Green to Light Green */
+    color: black;
+}
+
+      .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(to right, #e8f4c3, #f1e47f); /* Soft blue to light green */
+}
+
+    .flower-card {
+        width: 300px;
+        margin: 1rem;
+        background: lightgoldenrodyellow;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        }
+        .flower-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        }
+        .flower-card .details {
+        padding: 1rem;
+        text-align: center;
+        }
+        .flower-card h3 {
+        margin: 0.5rem 0;
+        color: #333;
+        }
+        .flower-card p {
+        margin: 0.5rem 0;
+        color: #666;
+        }
+        .flower-card .price {
+        color: #8bc34a;
+        font-weight: bold;
+        margin-top: 1rem;
+        }
+        .flower-card .action-button {
+        display: block;
+        margin: 0.5rem 0;
+        padding: 0.5rem 1rem;
+        background: yellowgreen;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        }
+        .flower-card .action-button:hover {
+        background: green;
+        color: white;
+        }
+
+
+        footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(to right, #cd9732, #cbef78); /* Matching Header Theme */
+    color: white;
+    font-size: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: lightyellow;
+}
+
+.navbar {
+   background: linear-gradient(to right, #cbef78, #cd9732); /* Downward gradient */
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+/* Extra Effect: Slide Down Animation */
+.navbar {
+    animation: slideDown 0.5s ease-in-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+   
+</style>
+
+    </style>
+</head>
+
+
+<header>
+    <h1>Explore Our Beautiful Flowers</h1>  
+    <p>Fresh blooms just for you!</p>
+    <p>BLOOM ROOM</p>
+</header>
+
+<nav class="navbar">
+    <a href="/aboutus">About Us</a>
+    <a href="/contactus">Contact Us</a>
+    <a href="/supportus">Support Us</a>
+</nav>
+
+
+
+<div class="container">
+    {% for flower in flowers %}
+    <div class="flower-card">
+        {% if flower.image %}
+            <img src="{{ flower.image.url }}" alt="{{ flower.name }}">
+        {% else %}
+            <img src="/static/default-flower.jpg" alt="Default Flower Image">
+        {% endif %}
+        
+        <div class="details">
+            <h3>{{ flower.name }}</h3>
+            <p>Fragrance: {{ flower.fragrance }}</p>
+            <p>
+                <span class="original-price" style="text-decoration: line-through; color: gray;">₹{{ flower.original_price }}</span>
+                <span class="price">₹{{ flower.price }}</span>
+            </p>
+            <a href="/flower/{{ flower.id }}" class="action-button">Show Details</a>
+            <a href="/buy/{{ flower.id }}" class="action-button">Buy</a>
+            <!-- <a href="http://127.0.0.1:8000/login/" class="action-button">Buy Now</a> -->
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+<footer>
+    <footer>
+     <p>&copy; 2025 Bloom Room | All Rights Reserved</p>
+    
+    <p>Contact Us:  
+        📧 Email: <a href="mailto:info@bloomroom.com">info@bloomroom.com</a> |  
+        📞 Phone: <a href="tel:+911234567890">+91 123 456 7890</a>  
+    </p>
+
+    <p>Follow us on:  
+        <a href="https://facebook.com" target="_blank">Facebook</a> |  
+        <a href="https://instagram.com" target="_blank">Instagram</a> |  
+        <a href="https://twitter.com" target="_blank">Twitter</a>  
+    </p>
+</footer>
+
+</footer>
+
+</html>

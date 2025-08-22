@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        .confirmation-page {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(to right, #cbef78, #cd9732);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: black;
+        }
+        p {
+            color:black;
+            margin: 0.5rem 0;
+        }
+        .wish-message {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: black;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 1.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: black;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Warm gradient */ 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(to right, #e96443, #904e95);
+        }
+            footer {
+    text-align: center;
+    padding: 5rem;
+    background: linear-gradient(to right, #cd9732, #cbef78); /* Matching Header Theme */
+    color: black;
+    font-size: 2rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: lightyellow;
+}
+
+    </style>
+</head>
+<body>
+    <div class="confirmation-page">
+        <h1>Order Confirmed!</h1>
+        <p>Thank you, <strong>{{ order.customerid.name }}</strong>, for your purchase!</p>
+        <p>Flower: <strong>{{ flower.name }}</strong></p>
+        <p>Quantity: <strong>{{ order.quantity }}</strong></p>
+        <p>Total Price: <strong>₹{{ order.price }}</strong></p>
+        <p>Order Date: <strong>{{ order.orderdate }}</strong></p>
+        <p>Status: <strong>{{ order.status }}</strong></p>
+        <p class="wish-message">We hope this flower brightens your day, {{ order.customerid.name }}!</p>
+        <button onclick="goHome()">Home</button>
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+<footer>
+    <p>&copy; 2025 Bloom Room | All Rights Reserved</p>
+    
+    <p>Contact Us:  
+        📧 Email: <a href="mailto:info@bloomroom.com">info@bloomroom.com</a> |  
+        📞 Phone: <a href="tel:+911234567890">+91 123 456 7890</a>  
+    </p>
+
+    <p>Follow us on:  
+        <a href="https://facebook.com" target="_blank">Facebook</a> |  
+        <a href="https://instagram.com" target="_blank">Instagram</a> |  
+        <a href="https://twitter.com" target="_blank">Twitter</a>  
+    </p>
+</footer>
+</html>
